@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Toolkit
+Comment=
+Exec=/bin/Linux-tools/linux-toolkit.sh
+Icon=/bin/Linux-tools/tool.jpg
+Categories=Utility;
+Terminal=True
+Type=Application  
