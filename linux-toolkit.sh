@@ -1,4 +1,7 @@
-#!/bin/bash
+ #!/bin/bash
+
+
+
 
 green='\e[32m'
 blue='\e[34m'
@@ -7,7 +10,7 @@ clear='\e[0m'
 user=$(whoami)
 workdir=$(pwd)
 time=$(date)
-
+FILE=~/.toolsaccept.txt
 
 
 
@@ -27,14 +30,17 @@ pause(){
 	read -n 1 -s -r -p "Press any key to continue"
 }
 
-hide(){
-welcomemsg
+firsttimerun() {
+if [ -f "$FILE" ]; then
+clear
+else 
+warning
+touch $FILE
+echo "Linux Toolkit comes with NO warranties, I am NOT responsible if you break your linux system. 
+Would you like to continue with Linux Toolkit  
+Accept=True" > $FILE
+fi 
 
-echo ""
-sed  -i -- "s|oldwarning(){|oldwarning(){|" $workdir/linux-toolkit.sh
-sed  '75d' $workdir/linux-toolkit. sh
-echo ""
-pause
 }
 
 #Welcome Message
@@ -45,9 +51,11 @@ echo ""
 echo "Todays date is $time"
 echo ""
 echo "Author: Frazer  Grant"
-echo "Version: 0.5"
-sleep 0.5
+echo "Version: 1.0"
+sleep 0.2
 }
+
+## Warning message
 warning(){
 read -r -p "Linux Toolkit comes with NO warranties, I am NOT responsible if you break your linux system. 
 Would you like to continue with Linux Toolkit  [Y/n] " response
@@ -61,9 +69,10 @@ Would you like to continue with Linux Toolkit  [Y/n] " response
 }
 
 ############################################################################ Main Menu #########################################
-warning
+firsttimerun
 menu(){
 welcomemsg	
+
 echo -ne "
 Linux Toolkit
 $(ColorGreen '1)') System Information
@@ -72,7 +81,7 @@ $(ColorGreen '3)') Remove User
 $(ColorGreen '4)') Update System
 $(ColorGreen '5)') Remove Software
 $(ColorGreen '6)') Install Software
-$(ColorGreen 'h)') Hide warning message
+$(ColorGreen '7)') Run Command
 $(ColorGreen 'a)') About
 $(ColorGreen '0)') Exit
 $(ColorBlue 'Choose an option:') "
@@ -84,7 +93,7 @@ $(ColorBlue 'Choose an option:') "
             4) sysupdate ; menu ;;
 	        5) removesoftware; menu ;;
 			6) installsoftware; menu ;;
-			h) hide; menu ;;
+			7) runcommand; menu ;;
 			a) about; menu ;;
 		0) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
@@ -177,7 +186,103 @@ fi
 		pause
 		removeuser
 	fi
-	read -r -p "Do you want to delete the home folder for $rname? [Y/n] " response
+	read -r -p "Do you want to delete the home folder for $rname? [Y/n] " res## Remove Software
+225
+removesoftware(){
+226
+## Arch Based
+227
+read -r -p 'What software do you want to remove?: ' remove
+228
+        if command -v pacman &> /dev/null
+229
+        then
+230
+                sudo pacman -Rns $remove
+231
+                pause
+232
+## Debian Based
+233
+        elif command -v apt-get &> /dev/null
+234
+        then
+235
+                sudo apt purge --auto-remove $remove
+236
+## Fedora
+237
+        elif command -v dnf &> /dev/null
+238
+        then
+239
+                sudo dnf remove $remove
+240
+        fi
+241
+​
+242
+}
+243
+## Install Software
+244
+installsoftware(){
+245
+## Arch Based
+246
+read -r -p 'What software do you want to Install?: ' install
+247
+        if command -v pacman &> /dev/null
+248
+        then
+249
+                sudo pacman -S $install
+250
+## Debian Based
+251
+        elif command -v apt-get &> /dev/null
+252
+        then
+253
+                sudo apt install $install
+254
+## Fedora
+255
+        elif command -v dnf &> /dev/null
+256
+        then
+257
+                sudo dnf install $install
+258
+        fi
+259
+​
+260
+}
+261
+# Call the menu function
+262
+about(){
+263
+clear
+264
+welcomemsg
+265
+echo""
+266
+echo "About Page"
+267
+echo ""
+268
+pause
+269
+}
+270
+menu
+271
+​
+272
+ponse
 	response=${response,,} # tolower
 	if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then 
 		sudo userdel -f -r $rname
@@ -250,7 +355,7 @@ read -r -p 'What software do you want to Install?: ' install
 ## Debian Based
 	elif command -v apt-get &> /dev/null
 	then
-		sudo apt install $install
+		sudo apt install $install/.toolsaccept.txt 
 ## Fedora
 	elif command -v dnf &> /dev/null
 	then
@@ -258,6 +363,19 @@ read -r -p 'What software do you want to Install?: ' install
 	fi
 
 }
+runcommand(){
+welcomemsg
+echo "" 
+read -r -p  'Enter Command: ' command
+$command
+echo ""
+pause
+
+
+}
+
+
+
 # Call the menu function
 about(){
 clear
