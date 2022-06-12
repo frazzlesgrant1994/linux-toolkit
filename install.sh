@@ -1,16 +1,41 @@
 #!/bin/bash
+## Linux-Toolkit Installer
+## Simple script to copy files to a location that allows any user on the system to access and use the tool 
+## Author: Frazer Grant
+## Version: 1.0
 
 
+
+shfile=/etc/Linux-toolkit/linux-toolkit.sh
+iconfile=/etc/Linux-toolkit/tool.jpeg
+filedesktop=/usr/share/applications/toolkit.desktop
 
 pause(){
 	read -n 1 -s -r -p "Press any key to continue"
 }
 
 
+if [ -f "$shfile" ]; then
+echo "Linux-toolkit.sh is already installed "
+else 
 sudo mkdir /etc/Linux-toolkit
-sudo mv linux-toolkit.sh /etc/Linux-toolkit/
-sudo mv tool.jpg /etc/Linux-toolkit/
-sudo mv toolkit.desktop /usr/share/applications/
+sudo cp linux-toolkit.sh /etc/Linux-toolkit/
+
+fi 
+
+if [ -f "$iconfile" ]; then
+echo "Linux-toolkit Icons already installed"
+else 
+sudo cp  tool.jpg /etc/Linux-toolkit/
+
+fi 
+if [ -f "$filedesktop" ]; then
+echo "Linux-toolkit shortcut already installed"
+else 
+sudo cp  toolkit.desktop /usr/share/applications/
+fi
+
 sudo chmod +rwx /etc/Linux-toolkit/linux-toolkit.sh
-echo "Installed"
+
+echo "Linux Toolkit has been Installed"
 pause
