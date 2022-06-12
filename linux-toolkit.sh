@@ -1,6 +1,9 @@
 #!/bin/bash
 
-
+## Linux-Toolkit 
+## Tools to help add users, install/remove software and update your system
+## Author: Frazer Grant
+## Version: 1.0
 
 
 green='\e[32m'
