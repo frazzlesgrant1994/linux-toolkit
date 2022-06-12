@@ -11,5 +11,6 @@ sudo mkdir /etc/Linux-toolkit
 sudo mv linux-toolkit.sh /etc/Linux-toolkit/
 sudo mv tool.jpg /etc/Linux-toolkit/
 sudo mv Toolkit.desktop /usr/share/applications/
+sudo chmod +rwx /etc/Linux-toolkit/linux-toolkit.sh
 echo "Installed"
 pause
