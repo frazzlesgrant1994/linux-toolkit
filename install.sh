@@ -23,6 +23,7 @@ if [ -f "$shfile" ]; then
 else 
 	sudo mkdir /etc/Linux-toolkit
 	sudo cp linux-toolkit.sh /etc/Linux-toolkit/
+	sudo cp update.sh /etc/Linux-toolkit/
 fi 
 
 

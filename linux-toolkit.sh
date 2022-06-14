@@ -3,7 +3,8 @@
 ## Linux-Toolkit 
 ## Tools to help add users, install/remove software and update your system
 ## Author: Frazer Grant
-## Version: 1.0
+## Version: 1.1
+
 
 
 green='\e[32m'
@@ -46,6 +47,17 @@ fi
 
 }
 
+checkforupdate(){
+bash /etc/Linux-toolkit/update.sh
+clear 
+bash /etc/Linux-toolkit/linux-toolkit.sh
+
+
+}
+
+
+
+
 #Welcome Message
 welcomemsg(){
 clear
@@ -54,7 +66,7 @@ echo ""
 echo "Todays date is $time"
 echo ""
 echo "Author: Frazer  Grant"
-echo "Version: 1.0"
+echo "Version: 1.1"
 sleep 0.2
 }
 
@@ -86,6 +98,7 @@ $(ColorGreen '5)') Remove Software
 $(ColorGreen '6)') Install Software
 $(ColorGreen '7)') Run Command
 $(ColorGreen 'a)') About
+$(ColorGreen 'u)') Update Linux-Toolkit
 $(ColorGreen '0)') Exit
 $(ColorBlue 'Choose an option:') "
         read a
@@ -98,6 +111,7 @@ $(ColorBlue 'Choose an option:') "
 			6) installsoftware; menu ;;
 			7) runcommand; menu ;;
 			a) about; menu ;;
+			u) checkforupdate;; 
 		0) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
