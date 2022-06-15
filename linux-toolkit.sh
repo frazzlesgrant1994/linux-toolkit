@@ -3,7 +3,7 @@
 ## Linux-Toolkit 
 ## Tools to help add users, install/remove software and update your system
 ## Author: Frazer Grant
-## Version: 1.1
+## Version: 0.5b
 
 
 
@@ -66,7 +66,7 @@ echo ""
 echo "Todays date is $time"
 echo ""
 echo "Author: Frazer  Grant"
-echo "Version: 1.1"
+echo "Version: 0.5b"
 sleep 0.2
 }
 

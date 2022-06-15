@@ -3,7 +3,7 @@
 ## Linux-Toolkit Uninstaller
 ## Simple script to remove the files that are used with Linux-Toolkit
 ## Author: Frazer Grant
-## Version: 1.0
+## Version: 0.5b
 
 
 
