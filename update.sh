@@ -10,7 +10,8 @@ pause(){
 }
 
 ## Check for updates
-currentversion=Linux-Toolkit-V1.1
+currentversion=Linux-Toolkit-V1.0
+
 
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/frazzlesgrant1994/linux-toolkit/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
@@ -23,7 +24,7 @@ else
 clear
 fi 
 
-## applying update 
+## Temp Dir
 Temp=~/temp
 
 if [ -f "$Temp" ]; then
@@ -33,16 +34,35 @@ else
 fi 
 
 cd ~/temp
+
+
+## Download update file 
+
 wget https://github.com/frazzlesgrant1994/linux-toolkit/releases/download/$LATEST_VERSION/$LATEST_VERSION.tar.gz
+
+## Extract and remove tar file
 tar -xzf $LATEST_VERSION.tar.gz
 rm -rf  $LATEST_VERSION.tar.gz
+
+## Move updated files to the specified locations
 sudo mv linux-toolkit.sh /etc/Linux-toolkit/
 sudo mv update.sh /etc/Linux-toolkit/
 sudo mv  tool.jpg /etc/Linux-toolkit/
 sudo mv  toolkit.desktop /usr/share/applications/
+
+## Setting Permissions for the specified  files
 sudo chmod +rwx /etc/Linux-toolkit/linux-toolkit.sh
+
+## Removeing  Temp Dir and toolsaccept file   
+tools=~/.toolsaccept.txt
 rm -rf ~/temp
-rm -rf ~/.toolsaccept.txt
+
+if [ -f "$tools" ]; then
+    rm -rf $tools
+else
+   echo ""
+fi 
+
 clear
 echo""
 	echo "Linux Toolkit has been updated"
