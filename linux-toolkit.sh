@@ -3,7 +3,7 @@
 ## Linux-Toolkit 
 ## Tools to help add users, install/remove software and update your system
 ## Author: Frazer Grant
-## Version: 0.5b
+
 
 
 
@@ -15,7 +15,7 @@ user=$(whoami)
 workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
-
+version=Linux-Toolkit-V0.6b
 
 
 ##
@@ -26,9 +26,9 @@ ColorGreen(){
 	echo -ne $green$1$clear
 }
 ColorBlue(){
-	echo -ne $blue$1$clear
-}
+	echo -ne $blue$1$clears
 
+}	
 pause(){
 
 	read -n 1 -s -r -p "Press any key to continue"
@@ -51,12 +51,35 @@ checkforupdate(){
 bash /etc/Linux-toolkit/update.sh
 clear 
 bash /etc/Linux-toolkit/linux-toolkit.sh
+}
 
+## check for update on start 
 
+updatetool(){
+read -r -p "There is an update available. Would you like to update?  [Y/n]" response
+  response=${response,,} # tolower
+  if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then
+	    checkforupdate
+  else 
+      clear
+    echo ""
+  fi
 }
 
 
 
+updatecheck(){
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/frazzlesgrant1994/linux-toolkit/releases/latest)
+LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
+
+if [ "$version" == "$LATEST_VERSION" ]; then
+    echo ""
+    
+else
+    updatetool
+fi 
+
+}
 
 #Welcome Message
 welcomemsg(){
@@ -66,7 +89,7 @@ echo ""
 echo "Todays date is $time"
 echo ""
 echo "Author: Frazer  Grant"
-echo "Version: 0.5b"
+echo "$version"
 sleep 0.2
 }
 
@@ -84,6 +107,7 @@ Would you like to continue with Linux Toolkit  [Y/n] " response
 }
 
 ############################################################################ Main Menu #########################################
+updatecheck
 firsttimerun
 menu(){
 welcomemsg	
@@ -306,5 +330,6 @@ echo "About Page"
 echo ""
 pause
 }
-menu
 
+
+menu
