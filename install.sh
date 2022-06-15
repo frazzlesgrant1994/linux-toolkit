@@ -2,7 +2,7 @@
 ## Linux-Toolkit Installer
 ## Simple script to copy files to a location that allows any user on the system to access and use the tool 
 ## Author: Frazer Grant
-## Version: 1.0
+## Version: 0.5b
 
 
 # File locations
