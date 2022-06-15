@@ -10,7 +10,7 @@ pause(){
 }
 
 ## Check for updates
-currentversion=Linux-Toolkit-V0.5b
+currentversion=Linux-Toolkit-V0.6b
 
 
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/frazzlesgrant1994/linux-toolkit/releases/latest)
