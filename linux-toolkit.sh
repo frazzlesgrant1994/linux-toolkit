@@ -15,7 +15,7 @@ user=$(whoami)
 workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
-version=Linux-Toolkit-V0.6b
+version=Linux-Toolkit-V0.6.1b
 
 
 ##
@@ -47,11 +47,11 @@ fi
 
 }
 
-checkforupdate(){
-bash /etc/Linux-toolkit/update.sh
-clear 
-bash /etc/Linux-toolkit/linux-toolkit.sh
-}
+#checkforupdate(){
+#bash /etc/Linux-toolkit/update.sh
+#clear 
+#bash /etc/Linux-toolkit/linux-toolkit.sh
+#}
 
 ## check for update on start 
 
@@ -59,7 +59,9 @@ updatetool(){
 read -r -p "There is an update available. Would you like to update?  [Y/n]" response
   response=${response,,} # tolower
   if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then
-	    checkforupdate
+	    bash /etc/Linux-toolkit/update.sh
+		clear 
+		bash /etc/Linux-toolkit/linux-toolkit.sh
   else 
       clear
     echo ""
@@ -73,7 +75,7 @@ LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/fra
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 
 if [ "$version" == "$LATEST_VERSION" ]; then
-    echo ""
+    echo "You are on the latest version"
     
 else
     updatetool
@@ -122,7 +124,6 @@ $(ColorGreen '5)') Remove Software
 $(ColorGreen '6)') Install Software
 $(ColorGreen '7)') Run Command
 $(ColorGreen 'a)') About
-$(ColorGreen 'u)') Update Linux-Toolkit
 $(ColorGreen '0)') Exit
 $(ColorBlue 'Choose an option:') "
         read a
@@ -135,7 +136,6 @@ $(ColorBlue 'Choose an option:') "
 			6) installsoftware; menu ;;
 			7) runcommand; menu ;;
 			a) about; menu ;;
-			u) checkforupdate;; 
 		0) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
@@ -321,15 +321,32 @@ pause
 
 
 
-# Call the menu function
-about(){
-clear
-welcomemsg
-echo""
-echo "About Page"
-echo ""
-pause
-}
 
+# About
+about(){	
+clear
+welcomemsg	
+echo -ne "
+System Information
+$(ColorGreen '1)') Version information
+$(ColorGreen '2)') Licence 
+$(ColorGreen '3)') ...
+$(ColorGreen '4)') ...
+$(ColorGreen '5)') ...
+$(ColorGreen 'u)') Check for updates
+$(ColorGreen '0)') Back
+$(ColorBlue 'Choose an option:') "
+        read a
+        case $a in
+            1) ... ; about ;;
+	        2)  clear && uname -a && pause ; clear && sysinfo ;;
+	        3) ... ; menu ;;
+            4) ... ; menu ;;
+	        5) ... ; menu ;;
+			u) updatecheck && pause ; menu ;;
+			0) menu ;;
+		*) echo -e $red"Wrong option."$clear; WrongCommand;;
+        esac
+}
 
 menu
