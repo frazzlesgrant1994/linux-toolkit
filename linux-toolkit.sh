@@ -38,6 +38,7 @@ firsttimerun() {
 if [ -f "$FILE" ]; then
 clear
 else 
+clear
 warning
 touch $FILE
 echo "Linux Toolkit comes with NO warranties, I am NOT responsible if you break your linux system. 
