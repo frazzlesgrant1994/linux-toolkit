@@ -6,17 +6,24 @@
 
 
 
-
+###### List of Veriables 
 green='\e[32m'
 blue='\e[34m'
 clear='\e[0m'
-
 user=$(whoami)
 workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
-version=Linux-Toolkit-V0.1.1b
+version=Linux-Toolkit-V0.1.2b
 osver=$(cat /proc/sys/kernel/{ostype,osrelease})
+repo=https://github.com/frazzlesgrant1994/linux-toolkit/
+
+
+
+
+
+
+
 
 ##
 #Functions
@@ -27,11 +34,12 @@ ColorGreen(){
 }
 ColorBlue(){
 	echo -ne $blue$1$clears
+}
 
-}	
+
 pause(){
 
-	read -n 1 -s -r -p "Press any key to continue"
+	read -r -s -p $'Press enter to continue...'
 }
 
 firsttimerun() {
@@ -47,12 +55,6 @@ Accept=True" > $FILE
 fi 
 
 }
-
-#checkforupdate(){
-#bash /etc/Linux-toolkit/update.sh
-#clear 
-#bash /etc/Linux-toolkit/linux-toolkit.sh
-#}
 
 ## check for update on start 
 
@@ -72,7 +74,7 @@ read -r -p "There is an update available. Would you like to update?  [Y/n]" resp
 
 
 updatecheck(){
-LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/frazzlesgrant1994/linux-toolkit/releases/latest)
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 
 if [ "$version" == "$LATEST_VERSION" ]; then
@@ -338,7 +340,7 @@ $(ColorGreen 'Choose an option:') "
         read a
         case $a in
             1) versioninfo ; about ;;
-	        2) versioninfo ; clear && about ;;
+	        2) licensefunc ; about ;;
 	        3) ... ; menu ;;
             4) ... ; menu ;;
 	        5) ... ; menu ;;
@@ -354,9 +356,18 @@ welcomemsg
 echo ""
 echo "Version: $version "
 echo ""
-echo "Release Notes: https://github.com/frazzlesgrant1994/linux-toolkit/releases/$version"	
+echo "Release Notes: $repo/releases/$version"	
 echo ""
 pause
 }
 
+licensefunc(){
+clear 
+cat /etc/Linux-toolkit/LICENSE.md
+echo ""
+pause
+}
+
+
+##### Calls Main menu #####
 menu

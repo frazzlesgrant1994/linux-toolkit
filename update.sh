@@ -2,7 +2,10 @@
 ## Linux-Toolkit Updater
 ## Simple script to update Linux Toolkit
 ## Author: Frazer Grant
-## Version: 0.1.1b
+## Version: 0.1.2b
+
+repo=https://github.com/frazzlesgrant1994/linux-toolkit/
+
 
 
 pause(){
@@ -12,8 +15,8 @@ pause(){
 ## Check for updates
 currentversion=Linux-Toolkit-V0.6.1b
 
-
-LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/frazzlesgrant1994/linux-toolkit/releases/latest)
+ttps://g
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 
 if [ "$currentversion" == "$LATEST_VERSION" ]; then
@@ -38,7 +41,7 @@ cd ~/temp
 
 ## Download update file 
 
-wget https://github.com/frazzlesgrant1994/linux-toolkit/releases/download/$LATEST_VERSION/$LATEST_VERSION.tar.gz
+wget $repo/releases/download/$LATEST_VERSION/$LATEST_VERSION.tar.gz
 
 ## Extract and remove tar file
 tar -xzf $LATEST_VERSION.tar.gz
@@ -48,6 +51,7 @@ rm -rf  $LATEST_VERSION.tar.gz
 sudo mv linux-toolkit.sh /etc/Linux-toolkit/
 sudo mv update.sh /etc/Linux-toolkit/
 sudo mv  tool.jpg /etc/Linux-toolkit/
+sudo mv LICENSE.md /etc/Linux-toolkit/
 sudo mv  toolkit.desktop /usr/share/applications/
 
 ## Setting Permissions for the specified  files
