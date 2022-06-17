@@ -134,7 +134,7 @@ $(ColorGreen '6)') Install Software
 $(ColorGreen '7)') Run Command
 $(ColorGreen 'a)') About
 $(ColorGreen '0)') Exit
-$(ColorBlue 'Choose an option:') "
+$(ColorGreen 'Choose an option:') "
         read a
         case $a in
             1) sysinfo ; menu ;;
@@ -166,7 +166,7 @@ $(ColorGreen '3)') ...
 $(ColorGreen '4)') ...
 $(ColorGreen '5)') ...
 $(ColorGreen '0)') Back
-$(ColorBlue 'Choose an option:') "
+$(ColorGreen 'Choose an option:') "
         read a
         case $a in
             1)  clear && ip a && pause ; clear && sysinfo ;;
