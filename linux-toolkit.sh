@@ -16,7 +16,7 @@ time=$(date)
 FILE=~/.toolsaccept.txt
 version=Linux-Toolkit-V0.1.2b
 osver=$(cat /proc/sys/kernel/{ostype,osrelease})
-repo=https://github.com/frazzlesgrant1994/linux-toolkit/
+repo=https://github.com/frazzlesgrant1994/linux-toolkit
 
 
 

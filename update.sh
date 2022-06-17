@@ -4,7 +4,7 @@
 ## Author: Frazer Grant
 ## Version: 0.1.2b
 
-repo=https://github.com/frazzlesgrant1994/linux-toolkit/
+repo=https://github.com/frazzlesgrant1994/linux-toolkit
 
 
 
