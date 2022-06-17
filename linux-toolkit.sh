@@ -93,8 +93,6 @@ echo "Hello $user. Welcome to the Linux Toolkit"
 echo ""
 echo "Todays date: $time"
 echo ""
-echo "Author: Frazer  Grant"
-echo ""
 echo "OS Version: "$osver""
 echo ""
 echo "##############################################################################################################"
@@ -305,15 +303,7 @@ installsoftware(){
 read -r -p 'What software do you want to Install?: ' install
 	if command -v pacman &> /dev/null
 	then
-		sudo pacman -S $install
-## Debian Based
-	elif command -v apt-get &> /dev/null
-	then
-		sudo apt install $install
-## Fedora
-	elif command -v dnf &> /dev/null
-	then
-		sudo dnf install $install
+		sudo pacman -S $install versioninfo
 	fi
 
 }
@@ -336,7 +326,7 @@ about(){
 clear
 welcomemsg	
 echo -ne "
-System Information
+About
 $(ColorGreen '1)') Version information
 $(ColorGreen '2)') Licence 
 $(ColorGreen '3)') ...
@@ -344,11 +334,11 @@ $(ColorGreen '4)') ...
 $(ColorGreen '5)') ...
 $(ColorGreen 'u)') Check for updates
 $(ColorGreen '0)') Back
-$(ColorBlue 'Choose an option:') "
+$(ColorGreen 'Choose an option:') "
         read a
         case $a in
-            1) ... ; about ;;
-	        2)  clear && uname -a && pause ; clear && sysinfo ;;
+            1) versioninfo ; about ;;
+	        2) versioninfo ; clear && about ;;
 	        3) ... ; menu ;;
             4) ... ; menu ;;
 	        5) ... ; menu ;;
@@ -356,6 +346,17 @@ $(ColorBlue 'Choose an option:') "
 			0) menu ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
+}
+
+versioninfo(){
+clear	
+welcomemsg	
+echo ""
+echo "Version: $version "
+echo ""
+echo "Release Notes: https://github.com/frazzlesgrant1994/linux-toolkit/releases/$version"	
+echo ""
+pause
 }
 
 menu
