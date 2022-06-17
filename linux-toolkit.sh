@@ -16,7 +16,7 @@ workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
 version=Linux-Toolkit-V0.6.1b
-
+osver=$(cat /proc/sys/kernel/{ostype,osrelease})
 
 ##
 #Functions
@@ -87,20 +87,28 @@ fi
 #Welcome Message
 welcomemsg(){
 clear
+echo "########################################### "$version" ############################################"
+echo ""
 echo "Hello $user. Welcome to the Linux Toolkit"
 echo ""
-echo "Todays date is $time"
+echo "Todays date: $time"
 echo ""
 echo "Author: Frazer  Grant"
-echo "$version"
+echo ""
+echo "OS Version: "$osver""
+echo ""
+echo "##############################################################################################################"
 sleep 0.2
 }
 
 ## Warning message
 warning(){
-read -r -p "Linux Toolkit comes with NO warranties, I am NOT responsible if you break your linux system. 
-Would you like to continue with Linux Toolkit  [Y/n] " response
+echo "######################################################################################################"
+read -r -p "# Linux Toolkit comes with NO warranties, I am NOT responsible if you break your linux system.       #
+# Would you like to continue with Linux Toolkit  [Y/n]					             #
+######################################################################################################" response
   response=${response,,} # tolower
+  
   if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then
 	    clear 
   else 
