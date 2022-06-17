@@ -2,7 +2,7 @@
 ## Linux-Toolkit Installer
 ## Simple script to copy files to a location that allows any user on the system to access and use the tool 
 ## Author: Frazer Grant
-## Version: 0.1.1b
+## Version: 0.1.2b
 
 
 # File locations
@@ -24,6 +24,7 @@ else
 	sudo mkdir /etc/Linux-toolkit
 	sudo cp linux-toolkit.sh /etc/Linux-toolkit/
 	sudo cp update.sh /etc/Linux-toolkit/
+	sudo cp LICENSE.md /etc/Linux-toolkit/
 fi 
 
 
