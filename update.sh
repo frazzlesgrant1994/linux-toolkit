@@ -2,7 +2,7 @@
 ## Linux-Toolkit Updater
 ## Simple script to update Linux Toolkit
 ## Author: Frazer Grant
-## Version: 0.6.1b
+## Version: 0.1.1b
 
 
 pause(){
