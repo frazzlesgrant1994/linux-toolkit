@@ -366,6 +366,7 @@ clear
 cat /etc/Linux-toolkit/LICENSE.md
 echo ""
 pause
+clear
 }
 
 

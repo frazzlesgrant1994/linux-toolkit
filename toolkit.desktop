@@ -5,5 +5,5 @@ Comment=
 Exec=/etc/Linux-toolkit/linux-toolkit.sh
 Icon=/etc/Linux-toolkit/tool.jpg
 Categories=Utility;
-Terminal=True
-Type=Application  
+Terminal=true
+Type=Application
