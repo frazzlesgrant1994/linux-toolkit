@@ -133,7 +133,7 @@ $(ColorGreen '5)') Remove Software
 $(ColorGreen '6)') Install Software
 $(ColorGreen '7)') Run Command
 $(ColorGreen 'a)') About
-$(ColorGreen '0)') Exit
+$(ColorGreen 'q)') Exit
 $(ColorGreen 'Choose an option:') "
         read a
         case $a in
@@ -145,7 +145,7 @@ $(ColorGreen 'Choose an option:') "
 			6) installsoftware; menu ;;
 			7) runcommand; menu ;;
 			a) about; menu ;;
-		0) exit 0 ;;
+		q) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
 }
@@ -166,6 +166,7 @@ $(ColorGreen '3)') ...
 $(ColorGreen '4)') ...
 $(ColorGreen '5)') ...
 $(ColorGreen '0)') Back
+$(ColorGreen 'q)') Exit
 $(ColorGreen 'Choose an option:') "
         read a
         case $a in
@@ -175,6 +176,7 @@ $(ColorGreen 'Choose an option:') "
             4) ... ; menu ;;
 	        5) ... ; menu ;;
 			0) menu ;;
+			q) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
 }
@@ -336,6 +338,7 @@ $(ColorGreen '4)') ...
 $(ColorGreen '5)') ...
 $(ColorGreen 'u)') Check for updates
 $(ColorGreen '0)') Back
+$(ColorGreen 'q)') Exit
 $(ColorGreen 'Choose an option:') "
         read a
         case $a in
@@ -346,6 +349,7 @@ $(ColorGreen 'Choose an option:') "
 	        5) ... ; menu ;;
 			u) updatecheck && pause ; menu ;;
 			0) menu ;;
+			q) exit 0 ;;
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
 }
