@@ -2,7 +2,7 @@
 ## Linux-Toolkit Updater
 ## Simple script to update Linux Toolkit
 ## Author: Frazer Grant
-## Version: 0.1.2b
+## Version: 0.1.3b
 
 repo=https://github.com/frazzlesgrant1994/linux-toolkit
 
@@ -13,7 +13,7 @@ pause(){
 }
 
 ## Check for updates
-currentversion=Linux-Toolkit-V0.6.1b
+currentversion=Linux-Toolkit-V0.1.3b
 
 ttps://g
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)

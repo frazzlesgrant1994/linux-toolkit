@@ -14,7 +14,7 @@ user=$(whoami)
 workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
-version=Linux-Toolkit-V0.1.2b
+version=Linux-Toolkit-V0.1.3b
 osver=$(cat /proc/sys/kernel/{ostype,osrelease})
 repo=https://github.com/frazzlesgrant1994/linux-toolkit
 
