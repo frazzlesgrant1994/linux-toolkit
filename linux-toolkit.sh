@@ -376,5 +376,3 @@ clear
 
 ##### Calls Main menu #####
 menu
-
-test
