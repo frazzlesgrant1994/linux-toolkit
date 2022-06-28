@@ -13,9 +13,8 @@ pause(){
 }
 
 ## Check for updates
-currentversion=Linux-Toolkit-V0.1.3b
+currentversion=Linux-Toolkit-V0.1.5b
 
-ttps://g
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 

@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=toolkit
 Comment=
-Exec=/home/Projects/Linux-toolkit/linux-toolkit.sh
+Exec=/etc/Linux-toolkit/linux-toolkit.sh
 Icon=/etc/Linux-toolkit/tool.jpg
 Categories=Utility;
 Terminal=true
