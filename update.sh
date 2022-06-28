@@ -2,7 +2,7 @@
 ## Linux-Toolkit Updater
 ## Simple script to update Linux Toolkit
 ## Author: Frazer Grant
-## Version: 0.1.3b
+## Version: 0.1.5b
 
 repo=https://github.com/frazzlesgrant1994/linux-toolkit
 

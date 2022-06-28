@@ -14,7 +14,7 @@ user=$(whoami)
 workdir=$(pwd)
 time=$(date)
 FILE=~/.toolsaccept.txt
-version=Linux-Toolkit-V0.1.4b
+version=Linux-Toolkit-V0.1.5b
 osver=$(cat /proc/sys/kernel/{ostype,osrelease})
 repo=https://github.com/frazzlesgrant1994/linux-toolkit
 
@@ -126,8 +126,8 @@ welcomemsg
 echo -ne "
 Linux Toolkit
 $(ColorGreen '1)') System Information
-$(ColorGreen '2)') Add User
-$(ColorGreen '3)') Remove User 
+$(ColorGreen '2)') Users and Groups
+$(ColorGreen '3)') ... 
 $(ColorGreen '4)') Update System
 $(ColorGreen '5)') Remove Software
 $(ColorGreen '6)') Install Software
@@ -138,8 +138,8 @@ $(ColorGreen 'Choose an option:') "
         read a
         case $a in
             1) sysinfo ; menu ;;
-	        2) addusr ; menu;;
-	        3) removeuser ; menu ;;
+	        2) usermanager ; menu;;
+	        3) ... ; menu ;;
             4) sysupdate ; menu ;;
 	        5) removesoftware; menu ;;
 			6) installsoftware; menu ;;
@@ -180,6 +180,39 @@ $(ColorGreen 'Choose an option:') "
 		*) echo -e $red"Wrong option."$clear; WrongCommand;;
         esac
 }
+
+
+# User Manager
+usermanager(){	
+clear
+welcomemsg	
+echo -ne "
+User And Group Management 
+$(ColorGreen '1)') Add User
+$(ColorGreen '2)') Remove User
+$(ColorGreen '3)') Change Password
+$(ColorGreen '4)') Add Group
+$(ColorGreen '5)') Remove Group 
+$(ColorGreen '6)') Add User To Group
+$(ColorGreen '7)') Remove User From Group
+$(ColorGreen '0)') Back
+$(ColorGreen 'q)') Exit
+$(ColorGreen 'Choose an option:') "
+        read a
+        case $a in
+            1)  addusr ; clear && sysinfo ;;
+	        2)  removeuser ; clear && sysinfo ;;
+	        3) ... ; menu ;;
+            4) ... ; menu ;;
+	        5) ... ; menu ;;
+		    6) ... ; menu ;;
+	        7) ... ; menu ;;
+			0) menu ;;
+			q) exit 0 ;;
+		*) echo -e $red"Wrong option."$clear; WrongCommand;;
+        esac
+}
+
 
 # Add User function
 addusr(){
@@ -375,4 +408,5 @@ clear
 
 
 ##### Calls Main menu #####
+
 menu
