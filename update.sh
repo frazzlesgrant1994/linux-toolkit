@@ -2,10 +2,16 @@
 ## Linux-Toolkit Updater
 ## Simple script to update Linux Toolkit
 ## Author: Frazer Grant
-## Version: 0.1.5b
+## Updater Version: 0.1.0b
 
-repo=https://github.com/frazzlesgrant1994/linux-toolkit
-
+configfile='config.cfg'
+if [ -f ${configfile} ]; then
+      echo "Reading user configuration...." >&2
+      source "$configfile"
+else
+    echo "config.cfg has been moved or does not exist"
+	exit 1
+fi
 
 
 pause(){
@@ -13,12 +19,11 @@ pause(){
 }
 
 ## Check for updates
-currentversion=Linux-Toolkit-V0.1.5b
 
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 
-if [ "$currentversion" == "$LATEST_VERSION" ]; then
+if [ "$version" == "$LATEST_VERSION" ]; then
     echo "Linux Toolit is upto date, Version = $LATEST_VERSION"
     pause
     exit 1
@@ -49,6 +54,7 @@ rm -rf  $LATEST_VERSION.tar.gz
 ## Move updated files to the specified locations
 sudo mv linux-toolkit.sh /etc/Linux-toolkit/
 sudo mv update.sh /etc/Linux-toolkit/
+sudo mv config.cfg /etc/Linux-toolkit/
 sudo mv  tool.jpg /etc/Linux-toolkit/
 sudo mv LICENSE.md /etc/Linux-toolkit/
 sudo mv  toolkit.desktop /usr/share/applications/

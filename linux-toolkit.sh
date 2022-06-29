@@ -4,29 +4,22 @@
 ## Tools to help add users, install/remove software and update your system
 ## Author: Frazer Grant
 
+##Check config file exists and Import config file 
+# Default location /etc/Linux-toolkit
 
 
-###### List of Veriables 
-green='\e[32m'
-blue='\e[34m'
-clear='\e[0m'
-user=$(whoami)
-workdir=$(pwd)
-time=$(date)
-FILE=~/.toolsaccept.txt
-version=Linux-Toolkit-V0.1.5b
-osver=$(cat /proc/sys/kernel/{ostype,osrelease})
-repo=https://github.com/frazzlesgrant1994/linux-toolkit
+configfile='config.cfg'
+if [ -f ${configfile} ]; then
+      echo "Reading user configuration...." >&2
+      source "$configfile"
+else
+    echo "config.cfg has been moved or does not exist"
+	exit 1
+fi
 
-
-
-
-
-
-
-
+ 
 ##
-#Functions
+#Beginnging of Functions
 ##
 
 ColorGreen(){
@@ -118,8 +111,6 @@ read -r -p "# Linux Toolkit comes with NO warranties, I am NOT responsible if yo
 }
 
 ############################################################################ Main Menu #########################################
-updatecheck
-firsttimerun
 menu(){
 welcomemsg	
 
@@ -407,6 +398,7 @@ clear
 }
 
 
-##### Calls Main menu #####
-
+##### #####
+updatecheck
+firsttimerun
 menu
