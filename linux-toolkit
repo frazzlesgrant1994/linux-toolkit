@@ -219,7 +219,7 @@ addusr(){
 		addusr
 	else
 		echo "creating user"
-		sudo useradd --create-home $uname
+		sudo useradd -m $uname
 		sudo passwd $uname
 		sudo usermod -aG wheel $uname
 	fi
