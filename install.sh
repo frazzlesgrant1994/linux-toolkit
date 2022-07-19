@@ -6,7 +6,7 @@
 
 
 # File locations
-shfile=/etc/Linux-toolkit/linux-toolkit.sh
+shfile=/etc/Linux-toolkit/linux-toolkit
 iconfile=/etc/Linux-toolkit/tool.jpeg
 filedesktop=/usr/share/applications/toolkit.desktop
 
@@ -22,7 +22,7 @@ if [ -f "$shfile" ]; then
 	echo "Linux-toolkit.sh is already installed "
 else 
 	sudo mkdir /etc/Linux-toolkit
-	sudo cp linux-toolkit.sh /etc/Linux-toolkit/
+	sudo cp linux-toolkit /etc/Linux-toolkit/
 	sudo cp config.cfg /etc/Linux-toolkit/
 	sudo cp update.sh /etc/Linux-toolkit/
 	sudo cp LICENSE.md /etc/Linux-toolkit/
@@ -44,7 +44,7 @@ else
 	sudo cp  toolkit.desktop /usr/share/applications/
 fi
 
-	sudo chmod +rwx /etc/Linux-toolkit/linux-toolkit.sh
+	sudo chmod +rwx /etc/Linux-toolkit/linux-toolkit
 
 	echo "Linux Toolkit has been Installed"
 pause

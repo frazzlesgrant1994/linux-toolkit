@@ -7,7 +7,6 @@
 
 
 
-file=/etc/Linux-toolkit/linux-toolkit.sh
 filedesktop=/usr/share/applications/toolkit.desktop
 
 pause(){

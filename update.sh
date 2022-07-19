@@ -52,7 +52,7 @@ tar -xzf $LATEST_VERSION.tar.gz
 rm -rf  $LATEST_VERSION.tar.gz
 
 ## Move updated files to the specified locations
-sudo mv linux-toolkit.sh /etc/Linux-toolkit/
+sudo mv linux-toolkit /etc/Linux-toolkit/
 sudo mv update.sh /etc/Linux-toolkit/
 sudo mv config.cfg /etc/Linux-toolkit/
 sudo mv  tool.jpg /etc/Linux-toolkit/
