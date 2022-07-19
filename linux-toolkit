@@ -7,13 +7,18 @@
 ##Check config file exists and Import config file 
 # Default location /etc/Linux-toolkit
 
+pause(){
 
-configfile='config.cfg'
+	read -r -s -p $'Press enter to continue...'
+}
+
+configfile='/etc/Linux-toolkit/config.cfg'
 if [ -f ${configfile} ]; then
       echo "Reading user configuration...." >&2
       source "$configfile"
 else
     echo "config.cfg has been moved or does not exist"
+	pause
 	exit 1
 fi
 
@@ -29,11 +34,6 @@ ColorBlue(){
 	echo -ne $blue$1$clears
 }
 
-
-pause(){
-
-	read -r -s -p $'Press enter to continue...'
-}
 
 firsttimerun() {
 if [ -f "$FILE" ]; then
