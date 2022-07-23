@@ -204,6 +204,10 @@ $(ColorGreen 'Choose an option:') "
         esac
 }
 
+# Add user to Sudo group
+ addsudo(){
+
+}
 
 # Add User function
 addusr(){
@@ -223,6 +227,14 @@ addusr(){
 		sudo passwd $uname
 		sudo usermod -aG wheel $uname
 	fi
+# Add sudo to account 
+read -r -p "Would you like to add $uname to the Sudo Group? [Y/n] " response
+response=${response,,} # tolower
+if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then 
+sudo usermod -aG sudo $uname
+clear
+else
+echo ""
 # Check Creation of account
 	getent passwd $uname > /dev/null 2&>1
 	if [ $? -eq 0 ]; then
@@ -233,10 +245,13 @@ addusr(){
 		clear
 		echo "Failed to create account for $uname"
 		pause
-		addusr	
+		usermanager
 	fi
+	
 }
 ## End of addusr 
+
+
 ## Remove User
 removeuser(){
 clear
