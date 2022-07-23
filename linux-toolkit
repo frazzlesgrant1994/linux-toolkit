@@ -14,7 +14,7 @@ pause(){
 
 configfile='/etc/Linux-toolkit/config.cfg'
 if [ -f ${configfile} ]; then
-      echo "Reading user configuration...." >&2
+      echo "Reading user configuration...." >&1
       source "$configfile"
 else
     echo "config.cfg has been moved or does not exist"
@@ -223,6 +223,7 @@ addusr(){
 		sudo usermod -aG wheel $uname
 	fi
 # Add sudo to account 
+clear
 read -r -p "Would you like to add $uname to the Sudo Group? [Y/n] " response
 response=${response,,} # tolower
 if [[ $response =~ ^((yes|y| )) ]] || [[ -z $response ]]; then 
@@ -230,6 +231,7 @@ sudo usermod -aG sudo $uname
 clear
 else
 echo ""
+fi
 # Check Creation of account
 	getent passwd $uname > /dev/null 2&>1
 	if [ $? -eq 0 ]; then
@@ -242,7 +244,6 @@ echo ""
 		pause
 		usermanager
 	fi
-	
 }
 ## End of addusr 
 
