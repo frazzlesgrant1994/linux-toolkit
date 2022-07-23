@@ -204,11 +204,6 @@ $(ColorGreen 'Choose an option:') "
         esac
 }
 
-# Add user to Sudo group
- addsudo(){
-
-}
-
 # Add User function
 addusr(){
 # Create Username
