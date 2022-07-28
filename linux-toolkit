@@ -19,7 +19,9 @@ if [ -f ${configfile} ]; then
 else
     echo "config.cfg has been moved or does not exist"
 	pause
-	exit 1
+	clear
+	exit 
+	
 fi
 
  
@@ -71,9 +73,17 @@ LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' $repo/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') 
 
 if [ "$version" == "$LATEST_VERSION" ]; then
+	clear
+	echo "Checking for updates...">&1
+	sleep 1
+	clear
     echo "You are on the latest version"
     
 else
+	clear
+	echo "Checking for updates...">&1
+	sleep 1
+	clear
     updatetool
 fi 
 
@@ -313,6 +323,7 @@ sysupdate(){
 	then
 		sudo dnf check-update
 		sudo dnf upgrade
+		pause
 
 	fi
 }
